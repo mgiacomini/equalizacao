@@ -1,0 +1,26 @@
+autores:
+	Mauricio Giacomini Girardello - GRR 20124502
+	Rodrigo Freitas - GRR 20124253
+	
+como compilar:
+	abra a pasta que contém o software e então vá para "src":
+		 $ cd software_path
+		 $ cd bin
+		 $ make tudo
+
+diretórios:
+	src: diretório de códigos fontes
+	bin: diretório gerado pelo make
+	
+arquivos:
+	comment.h e comment.c: módulo que contém a função que verifica se uma linha é comentário
+	filtros.h e filtros.c: módulo que contém os 2 filtros pedidos no trabalho, de média e mediana.
+	header.h e header.c: módulo com funções que manipulam o cabeçalho da imagem.
+	image.h e image.c: módulo que utiliza de funções para escrever o conteúdo da imagem em um arquivo
+	mallocc.h e mallocc.c: versão alternativa do malloc que verifica a existencia de erros
+	mask.h e mask.c: módulo para manipular a mascara que o usuário informar
+	matrix.h e matrix.c: funções que manipulam arrays bidimensionais (matrizes)
+	max_values.h: constantes necessárias para rodar o programa principal 
+	particiona.h e particiona.c: algoritimo de partição de vetores, utilizados no quicksort
+	quicksort.h e quicksort.c: algoritimo de quicksort para ordenar os vetores da mediana
+	
