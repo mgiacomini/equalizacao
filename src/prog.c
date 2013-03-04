@@ -87,33 +87,32 @@ void main(int argc, char **argv) {
 
 	// filtro da média
 	mask_size = get_mask_size(mask_file);
-
-	// aloca memória para a imagem de saída
-	mask = (int **) (mallocc(sizeof(int *) * mask_size));
-	for (i = 0; i < mask_size; i++) {
-		mask[i] = (int *) (mallocc(sizeof(int) * mask_size));
-	}
-
-	// passa os elementos do arquivo para uma array
-	mask = read_matrix_elements(mask_file, mask_size, mask_size);
-
-	// verifica se o tamanho da mascara está correto
-	if ((mask_size % 2 == 0) || mask_size < 3) {
-		printf("Tamanho da máscara incorreto.");
-		exit(EXIT_FAILURE);
-	}
-
-	// calcula o weight da máscara
-	for (i = 0; i < mask_size; i++) {
-		for (j = 0; j < mask_size; j++) {
-			weight = weight + mask[i][j];
+	if(argc == 4){
+		// aloca memória para a imagem de saída
+		mask = (int **) (mallocc(sizeof(int *) * mask_size));
+		for (i = 0; i < mask_size; i++) {
+			mask[i] = (int *) (mallocc(sizeof(int) * mask_size));
 		}
-	}
 
-	// aplica o filtro
-	if( argc == 4 )
+		// passa os elementos do arquivo para uma array
+		mask = read_matrix_elements(mask_file, mask_size, mask_size);
+
+		// verifica se o tamanho da mascara está correto
+		if ((mask_size % 2 == 0) || mask_size < 3) {
+			printf("Tamanho da máscara incorreto.");
+			exit(EXIT_FAILURE);
+		}
+
+		// calcula o weight da máscara
+		for (i = 0; i < mask_size; i++) {
+			for (j = 0; j < mask_size; j++) {
+				weight = weight + mask[i][j];
+			}
+		}
+
+		// aplica o filtro
 		media( matrix_height, matrix_width, mask_size, weight, array, output );
-	else
+	} else
 		mediana(matrix_height, matrix_width, mask_size, array, output);
 
 	// grava imagem
